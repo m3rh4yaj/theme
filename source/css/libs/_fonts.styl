@@ -1,0 +1,159 @@
+// ------------------------------
+// mixin
+// ------------------------------
+
+font-url(file)
+  return '/fonts/' + file
+//font-icon-version = "0"
+
+//Font face mixin
+webfont(family, file, hack-chrome-windows = false, weight = 'normal')
+  @font-face
+    font-family family
+    src url(font-url(file + '.eot'))
+    src url(font-url(file + '.eot?#iefix')) format('embedded-opentype'),
+        url(font-url(file + '.woff')) format('woff'),
+        url(font-url(file + '.ttf')) format('truetype'),
+        url(font-url(file + '.svg#'+ family)) format('svg')
+    font-weight weight
+    font-style normal
+  if hack-chrome-windows
+    @media screen and (-webkit-min-device-pixel-ratio:0)
+      @font-face
+        font-family family
+        src url(font-url(file + '.svg#'+ family)) format('svg')
+
+// ------------------------------
+// web font
+// ------------------------------
+
+.font-roman
+  font-family 'Kreon', serif
+
+webfont(sano, TokyoOlympic2020)
+.font-sano
+  font-family 'sano', serif
+  letter-spacing .2em
+
+// ------------------------------
+// icons
+// ------------------------------
+
+webfont(icons, icons)
+.myicon
+  position relative
+  font-family "icons", font-sans
+  speak none
+  font-style normal
+  font-weight normal
+  font-variant normal
+  text-transform none
+  line-height 1
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+
+/*
+
+.icon-search:before
+  content: "\e605"
+
+.icon-line:before
+  content: "\e600"
+
+.icon-pocket:before
+  content: "\e601"
+
+.icon-feedly:before
+  content: "\e602"
+
+.icon-hatebu:before
+  content: "\e603"
+
+.icon-tag:before
+  content: "\e604"
+
+.icon-folder:before
+  content: "\e606"
+
+.icon-home:before
+  content: "\e607"
+
+.icon-list:before
+  content: "\e608"
+
+.icon-notebook5:before
+  content: "\e609"
+
+.icon-paper:before
+  content: "\e60a"
+
+.icon-pen:before
+  content: "\e60b"
+
+.icon-next:before
+  content: "\e60c"
+
+.icon-star:before
+  content: "\e60d"
+
+.icon-github:before
+  content: "\e60e"
+
+.icon-prev:before
+  content: "\e60f"
+
+.icon-dia:before
+  content: "\e610"
+
+.icon-flash:before
+  content: "\e611"
+
+.icon-leaf:before
+  content: "\e9a4"
+
+.icon-google:before
+  content: "\ea88"
+
+.icon-facebook:before
+  content: "\ea8c"
+
+.icon-twitter:before
+  content: "\ea91"
+
+.icon-rss:before
+  content: "\ea94"
+
+.icon-vimeo:before
+  content: "\ea9c"
+
+.icon-wp:before
+  content: "\eab6"
+
+.icon-tux:before
+  content: "\eabe"
+
+.icon-apple:before
+  content: "\eabf"
+
+.icon-android:before
+  content: "\eac1"
+
+.icon-win:before
+  content: "\eac3"
+
+.icon-skype:before
+  content: "\eac6"
+
+.icon-chrome:before
+  content: "\eae5"
+
+.icon-firefox:before
+  content: "\eae6"
+
+.icon-ie:before
+  content: "\eae7"
+
+.icon-opera:before
+  content: "\eae8"
+
+*/

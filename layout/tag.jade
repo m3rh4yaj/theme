@@ -1,0 +1,75 @@
+extends base
+
+block vars
+  - var bodyclass = "archive";
+
+prepend window_title
+  | #{page.tag}|
+
+block prepend body
+  include _mixin/likebox
+  +fb-sdk()
+
+block header
+  div.page-head
+    h2.tle-page BLOG
+      span.subtle ブログ
+  include _partial/breadcrumb
+
+block content
+  section.sec.archive-blog
+    div.layer-white
+      div.container
+
+        div#main
+          div.archive-query-blog
+            - page.posts.each(function(post){
+              div.col.col-archivbe-blog
+                h3.tle-blog
+                  a(href=url_for(post.path))= post.title
+
+                div.postmeta
+                  include _mixin/sns
+                  - var postUrl = config.url + url_for(post.path);
+                  - var snsTxt = post.title + "|" + config.title;
+                  ul.sns
+                    li.btn
+                      +share("シェア", snsTxt, postUrl)
+                      span(
+                        class="facebook-#{post.id}"
+                      )
+                    li.btn
+                      +tweet("ツイート", snsTxt, postUrl)
+
+                  include _mixin/post_meta
+                  div.data
+                    span.date
+                      +date(post.date)
+                    //-タグをブログのカテゴリとして扱っています
+                    span.tag Category:
+                      +tag(post.tags)
+
+                div.thumb
+                  a(href=url_for(post.path)): img(src=post.thambnail)
+
+                div.archive-content
+                  - if(post.excerpt){
+                  != post.excerpt
+                  p.more-link
+                    a(href=url_for(post.path))= theme.excerpt_link
+                  - }else{
+                  != post.content
+                  - }
+            - });
+
+        aside#sidebar
+          include _partial/sidebar
+
+block script
+
+
+  script(type="text/javascript")
+    //share count
+    - site.categories.findOne({name: "blog"}).posts.sort("date", "desc").limit(10).each(function(post){
+      != "socialCountApi('"+config.url+url_for(post.path)+"', '"+post.id+"');"
+    -  })

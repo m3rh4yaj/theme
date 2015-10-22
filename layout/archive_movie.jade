@@ -1,0 +1,47 @@
+//-動画アーカイブは固定ページとして扱い、クラス名もそのようにしています。
+extends base
+
+block vars
+  - var bodyclass = "page";
+
+prepend window_title
+  = page.category
+  | |
+
+block header
+  div.page-head
+    h2.tle-page MOVIE
+      span.subtle 動画
+  include _partial/breadcrumb
+
+block content
+  section.sec.l-movie
+    div.layer-white
+      p.m0.head.
+        やぶれかぶれになつた賭博狂のやうにいろいろの本を開いて行つた。<br>
+        が、なぜかどの本も必ず文章か挿し画かの中に多少の針を隠してゐた。
+
+      #page-query-movie
+        - var val = 0;
+        - page.posts.each(function(post){
+          .col-movie
+            h3.tle-page-movie= post.title
+            div.page-movie-player
+              div(id="player0"+val)
+            div.page-movie-content!= post.content
+          - val++;
+        -  });
+
+      div.page-after
+        p.btn.btn-l.hover-cover: a(href="/") トップに戻る
+
+  include _partial/article_contact
+
+block script
+  script(type="text/javascript", src="#{theme.path.js}youtube.js")
+  script(type='text/javascript')
+    | // movie-query
+    | var ytData = [];
+    - site.categories.findOne({name: 'movie'}).posts.sort('date', 'desc').each(function(post){
+    != "ytData.push('" + post.videoId + "');"
+    - });

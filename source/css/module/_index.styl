@@ -1,0 +1,142 @@
+// ------------------------------------------
+// module
+// モジュールルール
+// moduleフォルダ内で基本的に編集するのは
+//_index.styl(当ファイル)のみとする。
+// ------------------------------------------
+
+//@import "_button.styl"
+//@import "_form.styl"
+@import "_image.styl"
+//@import "_link.styl"
+//@import "_navegacion.styl"
+//@import "_pagenation.styl"
+//@import "_table.styl"
+@import "_video.styl"
+
+// ----------------------------
+// column
+// ----------------------------
+
+.row
+  backgroundTransparency(col-background, .9)
+
+.col
+  rem(col-font-size)
+  color col-color
+  @media mq-mobile
+    rem(col-font-size-sp)
+
+// ----------------------------
+// heading
+// ----------------------------
+
+.tle
+  @extend .font-roman
+  rem(tle)
+  margin 0 auto
+  padding 50px 0
+  line-height 1.4
+  letter-spacing .1em
+  font-weight bold
+  color #555
+  @media mq-tablet
+    rem(tle-sp)
+
+.tle-page
+  @extend .font-roman
+  rem(tle)
+  margin 0 auto
+  padding 40px 0
+  line-height 1.6
+  letter-spacing .1em
+  font-weight bold
+  color #fff
+  @media mq-tablet
+   rem(tle-sp)
+
+.subtle
+  rem(subtle)
+  display block
+  margin 0 auto
+  font-weight nomal
+  font-family font-sans
+  letter-spacing .1em
+  @media mq-tablet
+    rem(subtle-sp)
+
+.tle-col
+  margin 0
+  padding 0
+  line-height 1.4
+
+// ----------------------------
+// button
+// ----------------------------
+
+.btn
+  display inline-block
+  text-align center
+  vertical-align middle
+  margin 0 auto
+  color btn-color
+  text-align center
+  touch-action manipulation
+  cursor pointer
+  background-image none // Reset unusual Firefox-on-Android default style see https://github.com/necolas/normalize.css/issues/214
+  border 1px solid transparent
+  white-space nowrap
+  user-select none
+  transition all .35s ease 0s
+  a
+    color color-white
+    &:hover,
+    &:active
+      color color-white
+
+// ----------------------------
+// layer
+// ----------------------------
+
+.layer-overlay
+  backgroundTransparency(color-black, .6)
+  position fixed
+  top 0
+  left 0
+  display none
+  width 100%
+  height 120%
+  z-index z-index-overlay
+  cursor pointer
+  if support-for-ie
+    .ie8 &
+      background url('/images/general/transparent.png') repeat
+
+.layer-loading
+  layer-loading(color-flesh, '/images/icon/loading.gif')
+
+// ----------------------------
+// breadcrumb
+// ----------------------------
+
+.breadcrumb
+  ul
+    rem(breadcrumb-font-size)
+
+.breadcrumb-item
+  display inline-block
+  margin 0
+  padding 0 0 0 breadcrumb-item-padding
+  &:after
+    content ">"
+    padding 0 0 0 breadcrumb-item-padding
+  &.active
+    &:after
+      content ""
+      padding 0
+  a
+    color breadcrumb-color-link
+    &:hover
+      color breadcrumb-color-hover
+    &:active
+      color breadcrumb-color-active

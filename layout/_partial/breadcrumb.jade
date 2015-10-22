@@ -1,0 +1,27 @@
+nav.breadcrumb
+  div.layer-flesh-flesh
+    ul.container
+      li.breadcrumb-home.breadcrumb-item: a(href="/") HOME
+
+      //- アーカイブ
+      if is_archive()
+        li.breadcrumb-item.active BLOG
+
+      //-カテゴリーアーカイブ（スラッグの出力ができないので直書き）
+      if is_category()
+        if is_current('categories/movie')
+          li.breadcrumb-item.active MOVIE
+        else
+          li.breadcrumb-item.active BLOG
+
+      //-タグアーカイブ（ブログカテゴリーとして扱っています）
+      if is_tag()
+        li.breadcrumb-item.active= page.tag
+
+      //-固定ページ
+      if is_page()
+        li.breadcrumb-item.active= page.id
+
+      //-記事ページ
+      if is_post()
+        li.breadcrumb-item.active= page.title

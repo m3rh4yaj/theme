@@ -1,0 +1,70 @@
+// ----------------------------
+// body
+// ----------------------------
+
+*
+  box-sizing border-box
+*:before,
+*:after
+  box-sizing border-box
+
+html
+  -ms-text-size-adjust 100%
+  -webkit-text-size-adjust 100%
+
+body
+  rem(font-size)
+  min-height 100%
+  overflow-x hidden
+  font-family font-sans
+  font-weight 300
+  color color-default
+  background color-background
+  line-height: line-height
+  @media mq-mobile
+    rem(font-size-sp)
+
+a
+  color color-link
+  text-decoration none
+  transition all .25s linear
+  &:hover
+    color color-link-hover
+  &:active
+    color color-link-active
+
+// ----------------------------
+// article
+// ----------------------------
+
+if sidebar-left or sidebar-right
+  #main
+    if sidebar-left
+      float right
+      width (container-desktop - grid-gutter-width - sidebar-left - sidebar-margin )
+    if sidebar-right
+      float left
+      width (container-desktop - grid-gutter-width - sidebar-right - sidebar-margin )
+    //@media mq-normal
+    @media mq-tablet
+      width 100%
+
+// ----------------------------
+// aside
+// ----------------------------
+
+if sidebar-left or sidebar-right
+  #sidebar
+    overflow hidden
+    if sidebar-left
+      float left
+      margin-right sidebar-margin
+      width sidebar-left
+    if sidebar-right
+      float right
+      margin-left sidebar-margin
+      width sidebar-right
+    @media mq-tablet
+      float none
+      width 100%
+      margin-left 0

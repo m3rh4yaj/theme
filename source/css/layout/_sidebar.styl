@@ -1,0 +1,210 @@
+// ----------------------------
+// sidebar
+// ----------------------------
+#sidebar
+  margin-top 50px
+  margin-bottom 50px
+
+  section
+    margin-top 30px
+
+  h3
+    rem(16px)
+    margin 0
+    padding 0
+    height 35px
+    line-height 35px
+    padding-left 15px
+    background lighten(color-brown2, 30)
+
+  .aside-likebox-min
+    width 250px
+    display block
+    margin 0 auto
+  .aside-likebox
+    width 440px
+    display none
+    margin 0 auto
+
+  .aside-follow
+    rem(14px)
+    margin-top 30px
+    text-align center
+    .sns-follow
+      @extend .font-roman
+      display block
+      padding 2px 0
+      letter-spacing .4em
+      background lighten(twitter, 10)
+      border-radius 5px
+      font-weight bold
+      color #fff
+      &:before
+        @extend .myicon
+        top 1px
+        content icon-twitter
+        margin-right 10px
+      &:hover
+        background lighten(twitter, 20)
+
+  .aside-new-query
+    rem(11px)
+    .aside-query-box
+      padding 10px 0
+      border-bottom 1px dotted color-default
+      clearfix()
+    .thumb
+      float left
+      padding-right 20px
+      img
+        width 80px
+        height 80px
+        &:hover
+          opacity(.8)
+    .data-aside-post
+      display block
+      line-height 1
+    .tle-aside-post
+      float right
+      margin-top 5px
+      line-height 1.5
+      width 150px
+
+  .aside-tag-cloud
+    rem(12px)
+    .tag-list
+      margin 5px 0 0
+      padding 0
+    .tag-list-item
+      display inline-block
+      margin 5px 5px 0 0
+    .tag-list-link
+      display block
+      padding 2px 8px
+      border 1px solid #e7e7e7
+      border-radius 3px
+      background #fff
+      transition all 0.2s ease 0s
+      &:hover
+        color #fff
+        background lighten(color-brown2, 20)
+
+  .aside-template
+    .aside-template-bnr
+      margin 10px 0 0
+      padding 0
+    .aside-template-item
+      opacity(.7)
+      display inline-block
+      transition all 0.3s ease 0s
+      margin-bottom 10px
+      &:hover
+        opacity(1)
+
+  @media mq-tablet
+
+    .aside-likebox-min
+      display none
+    .aside-likebox
+      display block
+
+    .aside-follow
+      rem(15px)
+      .sns-follow
+        margin 0 auto
+        padding 6px 0
+        width 440px
+
+    .aside-new-query
+      rem(13px)
+      .thumb
+        img
+          width 120px
+          height 120px
+      .tle-aside-post
+        float none
+        display block
+        margin-top 10px
+        width auto
+
+    .aside-template
+      .aside-template-item
+        width 33%
+        img
+          width 100%
+
+  @media mq-mobile
+
+    .aside-likebox-min
+      display block
+    .aside-likebox
+      display none
+
+    .aside-follow
+      .sns-follow
+        width 100%
+
+    .aside-new-query
+      .thumb
+        display none
+
+    .aside-template
+      .aside-template-item
+        display block
+        width auto
+        text-align center
+        img
+          width auto
+
+// ----------------------------
+// ie8
+// ----------------------------
+
+if support-for-ie
+  .ie8
+    #sidebar
+      .aside-likebox-min,
+      .aside-likebox
+        rem(14px)
+        blockquote
+          display block
+          margin 0
+          padding 0
+          text-align center
+          a
+            @extend .font-roman
+            display block
+            padding 3px 0
+            width 100%
+            letter-spacing .4em
+            background lighten(facebook, 10)
+            border-radius 5px
+            font-weight bold
+            color #fff
+            &:before
+              rem(15px)
+              @extend .myicon
+              content icon-facebook
+              margin-right 10px
+            &:hover
+              background lighten(facebook, 20)
+
+      @media mq-tablet
+        .aside-likebox
+          rem(15px)
+          blockquote
+            a
+              margin 0 auto
+              padding 6px 0
+              width 440px
+
+      @media mq-mobile
+        .aside-likebox-min
+          width 100%
+          blockquote
+            a
+              padding 8px 0
+              width 100%
+              &:before
+                rem(16px)
+                top 1px

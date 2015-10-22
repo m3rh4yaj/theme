@@ -1,0 +1,782 @@
+// ----------------------------
+// l-about
+// ----------------------------
+
+.l-about
+  background url('/images/bg-layout01.png') no-repeat center top
+  background-attachment fixed
+  color color-white
+  text-align center
+
+  .tle-about
+    rem(24px)
+    margin 0
+    padding 60px 0 0
+    letter-spacing .1em
+  .subtle-about
+    margin 0
+    padding 20px 0 60px
+    letter-spacing .1em
+    rem(13px)
+
+  .col
+    rem(font-size)
+    overflow hidden
+    height 350px
+    .tle-col
+      rem(24px)
+      font-weight normal
+    .text-left
+      padding-left 6%
+    .text-right
+      padding-right 6%
+    p
+      margin 20px 0 0
+      padding 0
+      line-height 240%
+
+  @media mq-tablet
+    .tle-about
+      rem(20px)
+      padding 30px 10px 0
+    .subtle-about
+      rem(13px)
+      padding 15px 10px 30px
+
+    .col
+      height auto
+      .text-left,
+      .text-right
+        text-align center
+        padding 40px 10px
+      .tle-col
+        rem(20px)
+      p
+        margin 1em 0 0
+        line-height 1.8
+
+  @media mq-mobile
+    .tle-about
+      rem(16px)
+    .subtle-about
+      rem(12px)
+    .col
+      max-height 250px
+
+// ----------------------------
+// l-profile
+// ----------------------------
+
+.l-profile
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  text-align center
+
+  .col
+    height 540px
+    ul
+      margin 0 10px
+      padding 0
+    li
+      margin 5px 0 0
+      padding 0
+    .tle-col
+      rem(16px)
+      padding 20px 0 0
+      letter-spacing .1em
+
+  .col-profile
+    rem(13px)
+    line-height 1.9
+    margin -10px 0 0
+
+  @media mq-tablet
+    .layer-flesh-flesh
+      gradationTransparency(darken(color-flesh, 10), color-white, .9, 0)
+
+    .col
+      height auto
+      ul
+        padding 5px 0 0
+      li
+        padding 5px 0 0
+        &:before
+          content "・"
+          padding-right 2px
+      .tle-col
+        rem(14px)
+        padding 1em 0 0
+
+    .col-profile
+      line-height 1.7
+      margin 0
+      padding 40px 25px
+
+  @media mq-mobile
+    .layer-flesh-flesh
+      gradationTransparency(color-flesh, darken(color-flesh, 20), .9, 0)
+    .col
+      min-height 350px
+      .tle-col
+        rem(15px)
+        padding 1.5em 0 0
+
+    .col-profile
+      rem(13px)
+      padding 25px 0
+
+// ----------------------------
+// l-blog
+// ----------------------------
+
+.l-blog
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  text-align center
+
+  .tle-blog
+    rem(12px)
+    margin 5px 0 0
+    padding 0
+    font-weight normal
+    line-height 1.5
+
+  .query-blog
+    backgroundTransparency(col-background, .9)
+    padding-bottom 70px
+    .container
+      padding-left 0
+      padding-right 0
+      padding-bottom 50px
+      text-align left
+    .thumb
+      display block
+      width 225px
+      height 124px
+      img
+        max-width 225px
+        max-height 124px
+        transition all 0.3s ease 0s
+        &:hover
+          opacity(.7)
+    .meta
+      padding 10px 0 0
+      rem(11px)
+    .data
+      &:after
+        content "|"
+        padding 0 3px
+
+  @media mq-tablet
+    width 100%
+    height auto
+
+    .tle-blog
+      rem(14px)
+      margin 10px auto 0
+      padding 0
+      width 72%
+      line-height 1.7
+
+    .query-blog
+      padding-bottom 60px
+      .container
+        padding-bottom 30px
+        text-align center
+      .col
+        &:after
+          myHr(#0C1923, 20px)
+        &:last-child
+          &:after
+            content ""
+      .thumb
+        width 90%
+        max-width 390px
+        height auto
+        margin 0 auto
+        img
+          max-width 100%
+          max-height 55%
+      .meta
+        rem(14px)
+        padding-top 15px
+
+  @media mq-mobile
+    .tle-blog
+      margin-right 5px
+      margin-left 5px
+      width auto
+
+// ----------------------------
+// l-plan
+// ----------------------------
+
+.l-plan
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  text-align center
+
+  .row-plan
+    background transparent
+    margin-left -30px
+    margin-right -30px
+    padding-bottom 20px
+    clearfix()
+    .tle-col
+      padding 1em 0 0
+      rem(17px)
+      font-weight bold
+    .col
+      padding-left 10px
+      padding-right 10px
+      img
+        border-radius 50%
+        border 2px solid color-white
+      .price
+        rem(15px)
+        color color-red
+      .contact
+        rem(15px)
+        color color-brown2
+      .btn
+        margin 20px 0 0
+
+  @media mq-tablet
+    .row-plan
+      margin-left -20px
+      margin-right -20px
+      .tle-col
+        rem(18px)
+        padding 20px 0 0
+        font-weight normal
+      .col
+        padding-left 20px
+        padding-right 20px
+        & + .col
+          padding-top 60px
+        &>img
+          width 100%
+          max-width 324px
+        p,
+        .price
+          margin 10px auto 0
+          width 72%
+        .btn
+          margin-top 15px
+          width 360px
+
+  @media mq-mobile
+    .row-plan
+      .col
+        p,
+        .price
+          margin-right 5px
+          margin-left 5px
+          width auto
+        .btn
+          width 100%
+
+.modal-content
+  animated(myModal, .5s)
+  position fixed
+  display none
+  width 40%
+  max-width 360px
+  border 2px solid #0C1923
+  background #fff
+  z-index z-index-modal-content
+  text-align left
+  img
+    width 100%
+  p
+    margin 0
+    padding 20px
+  &.open
+    display block
+
+  @media mq-tablet
+    width 100%
+    p
+      rem(12px)
+
+  @media mq-mobile
+    overflow-y auto
+    max-width auto
+    max-height 100%
+
+.l-option
+  padding-bottom 90px
+  h3
+    rem(18px)
+    margin 0
+    padding 0
+    color #222
+    font-weight normal
+  .row
+    background #fff
+  .text-left
+    padding 30px 40px
+  .col
+    height 330px
+
+  @media mq-tablet
+    padding-bottom 0
+    h3
+      rem(16px)
+    .col
+      height auto
+
+  @media mq-mobile
+    .text-left
+      padding 25px 0
+      text-align center
+
+
+// ----------------------------
+// l-movie
+// ----------------------------
+
+.l-movie
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  text-align center
+  .head
+    margin 0 5%
+  .title
+    rem(18px)
+
+  @media mq-tablet
+    .title
+      rem(16px)
+
+// ----------------------------
+// l-flow
+// ----------------------------
+
+.l-flow
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  text-align center
+
+  .row
+    margin 40px 40px 90px
+    padding 0
+  .col
+    rem(13px)
+
+  li
+    padding 36px
+    text-align left
+    .tle-col
+      rem(18px)
+      color color-brown2
+      margin 0
+      padding 0
+    &.flow-list02,
+    &.flow-list03
+      @extend .is-brown2
+      .tle-col
+        color color-white
+    &.flow-list04
+      color color-default
+      background transparent
+
+  @media mq-tablet
+    .row
+      margin 30px 0 60px
+
+    li
+      padding 20px 15px
+      .tle-col
+         rem(16px)
+      &.flow-list03
+        color color-default
+        background transparent
+        .tle-col
+          color color-brown2
+      &.flow-list04
+        background color-brown
+        color #fff
+        .tle-col
+          color color-white
+
+    @media mq-mobile
+      .col
+        rem(12px)
+      li
+        rem(12px)
+        .tle-col
+          rem(14px)
+
+// ----------------------------
+// l-faq
+// ----------------------------
+
+.l-faq
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  text-align center
+  .faq-copy
+    margin 0
+  .layer-white
+    padding 0 0 40px
+  .container
+    width 880px
+    padding 0
+
+  @media mq-tablet
+    .container
+      margin 0 auto
+      width 96%
+
+  @media mq-mobile
+    .head
+      padding 0 20px
+
+#faq-accordion
+  text-align left
+  border 1px solid color-gray
+  margin-top 40px
+  padding 10px 10px 15px
+  background color-white
+  clearfix()
+  .tle-q
+    position relative
+    rem(13px)
+    margin 0
+    padding 12px 0 10px 45px
+    font-weight bold
+    cursor pointer
+    &:before
+      @extend .font-roman
+      absolute-center(true, false)
+      rem(14px)
+      size 30px
+      content "Q"
+      left 5px
+      display block
+      line-height 28px
+      border-radius 50%
+      background color-brown2
+      color color-white
+      text-align center
+      transition all 0.3s ease 0s
+    &:hover
+      &:before
+        background lighten(color-brown2, 20)
+  & [aria-expanded="false"]
+    border-bottom 1px solid color-gray
+  p
+    rem(12px)
+    margin 0
+    padding 12px 10px 10px 20px
+    border-bottom 1px solid color-gray
+
+  @media mq-tablet
+    .tle-q
+      rem(font-size)
+    p
+      rem(font-size)
+
+  @media mq-mobile
+    .tle-q
+      rem(12px)
+      padding-left 40px
+      &:before
+        left 0
+    p
+      rem(12px)
+      padding 15px 10px 15px 20px
+
+
+// ----------------------------
+// l-social
+// ----------------------------
+
+.l-social
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  text-align center
+
+.index-social
+  width 1000px
+  margin 0 auto
+  padding 60px 0
+  .btn-social
+    overflow hidden
+    width 240px
+    height 50px
+    line-height 50px
+    margin 0 20px
+    padding 0
+    background color-white
+    a
+      display block
+      float left
+      width 75%
+      font-weight bold
+      &:before
+        rem(16px)
+        @extend .myicon
+        margin-right 10px
+    span
+      display block
+      float right
+      width 25%
+      color color-default
+      cursor default
+
+  .sns-share
+    hoverCoverLeft(lighten(facebook, 20))
+    background facebook
+    &:before
+      content icon-facebook
+  .sns-tweet
+    hoverCoverLeft(lighten(twitter, 20))
+    background twitter
+    &:before
+      position relative
+      top 2px
+      content: icon-twitter
+  .sns-hatebu
+    hoverCoverLeft(lighten(hatebu, 20))
+    background hatebu
+    &:before
+      position relative
+      top 3px
+      content: icon-hatebu
+
+  .no-count
+    background-color #C8C8C8
+
+  @media mq-tablet
+    margin-top -20px
+    width auto
+    .btn
+      display block
+    .btn-social
+      margin 20px auto 0
+      width 60%
+
+    @media mq-mobile
+      .btn-social
+        width 90%
+
+// ----------------------------
+// l-contact
+// ----------------------------
+
+.l-contact
+  height 300px
+  background url('/images/bg-footer.png') no-repeat center top
+  background-attachment fixed
+  color #fff
+  text-align center
+  .col-vertical-middle
+    width 100%
+  .tle
+    rem(30px)
+    margin 0
+    padding 0
+    color #FFF
+  .subtle
+    margin 0
+    padding 30px 0 0
+    rem(16px)
+  .btn
+    margin 30px 0 0
+  @media mq-tablet
+    height 260px
+    .tle
+      rem(26px)
+    .subtle
+      rem(15px)
+
+// ----------------------------
+// page
+// ----------------------------
+
+.page .sec
+  animated(fadeInLeft, .7s)
+  .layer-white,
+  .layer-flesh-flesh
+    padding-top 50px
+    @media mq-tablet
+      padding-top 40px
+
+.page-head
+  padding 45px 0
+  line-height 1.8
+  background url('/images/bg-page.jpg') no-repeat center center
+  color #fff
+  text-align center
+  @media mq-tablet
+    padding 15px 0
+    line-height 1.5
+
+.page-after
+  margin 40px 0 0
+  text-align center
+  .btn
+    margin 0 0 60px
+    line-height 1.7
+
+// ----------------------------
+// page-flow
+// ----------------------------
+
+.page
+  .l-flow
+    .row
+      margin-bottom 40px
+
+// ----------------------------
+// page-movie
+// ----------------------------
+
+#page-query-movie
+  width 750px
+  margin 40px auto
+  padding 0
+  .tle-page-movie
+    rem(18px)
+    margin 0 0 25px
+    padding 8px 14px 8px 16px
+    border-left 2px solid color-brown2
+    background #F5F3EE
+    text-align left
+    line-height 1.5
+  .page-movie-player
+    youtubeResponsive(100%, 56.25%)
+  .page-movie-content
+    rem(13px)
+    margin 20px 0 40px
+    text-align left
+
+  @media mq-tablet
+    width 95%
+    .tle-page-movie
+      rem(15px)
+      padding 8px 10px 8px 12px
+
+// ----------------------------
+// page-contactform
+// ----------------------------
+
+#page-contactform
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  text-align center
+  .container
+    width 900px
+
+  @media mq-tablet
+    .container
+      width 100%
+
+#page-contactform
+  .area
+    overflow hidden
+    margin 40px auto 20px
+    width 730px
+    background color-white
+    padding 10px 40px
+    border 1px solid #eee
+    bourder-radius 3px
+    dl
+      rem(12px)
+      padding 15px 0
+      border-bottom 1px dashed #ccc
+    dt
+      float left
+      margin-right 20px
+      width 140px
+      line-height 35px
+      letter-spacing .1em
+      text-align right
+      font-weight normal
+      span
+        position relative
+        top -1px
+        rem(10px)
+        margin-left 2px
+        color #E32525
+    dd
+      text-align left
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"]
+    textarea
+      width 400px
+      padding 5px 7px
+      background #F3F1E9
+      border 1px solid darken(#F3F1E9, 10)
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"]
+      height 35px
+      letter-spacing .1em
+    textarea
+      rem(11px)
+      line-height 1.4
+    select
+      width 200px
+      height 35px
+      border 1px solid darken(#F3F1E9, 10)
+    .form-submit
+      rem(13px)
+      margin 15px 0
+      padding 16px 0
+      width 210px
+      background #800606
+      border 1px solid darken(#800606, 10)
+      border-radius 3px
+      letter-spacing 0
+      &:hover
+        background lighten(#800606, 10)
+        letter-spacing .1em
+
+  @media mq-tablet
+    .area
+      padding 0 40px 10px
+      width 100%
+      dl
+        padding 10px 0
+      dt
+        float none
+        margin-bottom 5px
+        text-align left
+      dd
+        margin 0
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"]
+      textarea
+        width 100%
+      .form-submit
+        font-weight bold
+
+  @media mq-mobile
+    .area
+      padding 0 10px 10px
+      select
+        width 100%
+
+// ----------------------------
+// ios
+// ----------------------------
+
+.ios
+  .l-about,
+  .l-profile,
+  .l-blog,
+  .l-plan,
+  .l-movie,
+  .l-flow,
+  .l-faq,
+  .l-social,
+  .l-contact,
+  .archive-blog,
+  #page-contactform
+    background-repeat repeat
+    background-attachment scroll

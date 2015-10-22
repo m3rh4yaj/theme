@@ -1,0 +1,47 @@
+nav(
+  class="navbar navbar-default navbar-swap navbar-fixed-top"
+  role="navigation"
+)
+  div.container
+
+    div.navbar-header
+      button(
+        tyle="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#navbar-collapse"
+        area-expanded="false"
+      )
+        span.sr-only Toggle navgation
+        span.icon-bar.bar-top
+        span.icon-bar.bar-middle
+        span.icon-bar.bar-bottom
+      a(
+        class="navbar-brand font-sano"
+        href="/"
+      ) logo
+
+    div#navbar-collapse.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        each val, index in {'#index-profile':'プロフィール', 'archives/':'ブログ', '#index-plan':'料金プラン', 'categories/movie/':'動画', 'flow':'授業の流れ', 'faq':'よくあるご質問', 'contact':'お問い合わせ'}
+
+          //-topページ
+          if is_home()
+            if index === "contact"
+              li(class="navbar-item btn-red")
+                a(href=url_for(index))= val
+            else if index.match(/#/)
+              li(class="navbar-item")
+                a(class="smooth" href=index)= val
+            else
+              li(class="navbar-item")
+                a(href=url_for(index))= val
+
+          //-top以外(elseだとエラー)
+          unless is_home()
+            if index === "contact"
+              li(class="navbar-item btn-red")
+                a(href=url_for(index))= val
+            else
+              li(class="navbar-item")
+                a(href=url_for(index))= val

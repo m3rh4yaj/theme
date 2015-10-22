@@ -1,0 +1,142 @@
+div.container
+  p.m0.
+    五　赤光<br />
+    <br />
+    日の光は僕を苦しめ出した。僕は実際※(「鼬」の「由」に代えて「晏」、第3水準1-94-84)鼠のやうに窓の前へカアテンをおろし、昼間も電燈をともしたまま、せつせと前の小説をつづけて行つた。それから仕事に疲れると、テエヌの英吉利文学史をひろげ、詩人たちの生涯に目を通した。彼等はいづれも不幸だつた。エリザベス朝の巨人たちさへ、――一代の学者だつたベン・ジヨンソンさへ彼の足の親指の上に羅馬とカルセエヂとの軍勢の戦ひを始めるのを眺めたほど神経的疲労に陥つてゐた。僕はかう云ふ彼等の不幸に残酷な悪意に充ち満ちた歓びを感じずにはゐられなかつた。
+
+  form(
+    name=""
+    action=""
+    method="post"
+    id="contactform"
+    novalidate="novalidate"
+  )
+    div.area
+      dl
+        dt
+          |お名前
+          span ※
+        dd
+          input(
+            type="text"
+            name="your-name"
+            value=""
+            size="40"
+            class="form-name"
+            aria-required="true"
+            aria-invalid="false"
+          )
+      dl
+        dt 団体名
+        dd
+          input(
+            type="text"
+            name="your-team"
+            value=""
+            size="40"
+            class="form-team"
+            aria-invalid="false"
+          )
+      dl
+        dt
+          |電話番号
+          span ※
+        dd
+          input(
+            type="tel"
+            name="your-tel"
+            value=""
+            size="40"
+            class="form-tel"
+            aria-required="true"
+            aria-invalid="false"
+          )
+      dl
+        dt
+          |メールアドレス
+          span ※
+        dd
+          input(
+            type="email"
+            name="your-email"
+            value=""
+            size="40"
+            class="form-email"
+            aria-required="true"
+            aria-invalid="false"
+          )
+      dl
+        dt 会場名
+        dd
+          input(
+            type="text"
+            name="venue"
+            value=""
+            size="40"
+            class="form-venue"
+            aria-invalid="false"
+          )
+      dl
+        dt 会場場所
+        dd
+          input(
+            type="text"
+            name="area"
+            value=""
+            size="40"
+            class="form-area"
+            aria-invalid="false"
+          )
+      dl
+        dt
+          |人数
+          span ※
+        dd
+          select(
+            name="people"
+            class="form-people"
+            aria-required="true"
+            aria-invalid="false"
+          )
+            option(value="") ---
+            option(value="10人以下") 10人以下
+            option(value="20人以下") 20人以下
+            option(value="50人以下") 50人以下
+            option(value="100人以下") 100人以下
+            option(value="100人以下") 100人以上
+      dl
+        dt
+          |プラン
+          span ※
+        dd
+          select(
+            name="plan"
+            class="form-plan"
+            aria-required="true"
+            aria-invalid="false"
+          )
+            option(value="") ---
+            option(value="テーブルマジック") テーブルマジック
+            option(value="カウンターマジック") カウンターマジック
+            option(value="ステージマジック") ステージマジック
+            option(value="相談してから決めたい") 相談してから決めたい
+      dl
+        dt
+          |お問い合わせ内容
+          span ※
+        dd
+          textarea(
+            name="textarea"
+            value=""
+            cols="40"
+            rows="4"
+            class="form-textarea"
+            aria-required="true"
+            aria-invalid="false"
+          )
+      .form-btn
+        input(
+          type="submit"
+          value="この内容で送信する"
+          class="btn form-submit"
+        )

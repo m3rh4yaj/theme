@@ -1,0 +1,50 @@
+//-
+  facebook likebox (page Plugin)
+  https://developers.facebook.com/docs/plugins/page-plugin
+
+//- javascript(bodyタグの直後に設置)
+mixin fb-sdk()
+  div#fb-root
+  script(type="text/javascript").
+    //facebook sdk
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.async = true;
+      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.5";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+//- name: urlのID部分
+//- txt: ボックス内の表示名
+mixin likebox(name, txt, likeboxWidth, likeboxHeight)
+
+  //- boxサイズ
+  //- var likeboxWidth = "100%";
+  //- var likeboxHeight = "450";
+
+  //- ヘッダー縮小
+  - var likeboxSmallHeader = "false";
+  //- コンテナ幅サイズ適応
+  - var likeboxContainerWidth = "true";
+  //- ヘッダーの背景写真を隠す
+  - var likeboxHideCover = "false";
+  //- 友人のアイコンを表示する
+  - var likeboxShowFacepile = "false";
+  //- ポストを表示する
+  - var likeboxShowPosts = "true";
+
+  .fb-page(
+    data-href="https://www.facebook.com/#{name}"
+    data-width= likeboxWidth
+    data-height= likeboxHeight
+    data-small-header= likeboxSmallHeader
+    data-adapt-container-width= likeboxContainerWidth
+    data-hide-cover= likeboxHideCover
+    data-show-facepile= likeboxShowFacepile
+    data-show-posts= likeboxShowPosts
+    )
+    .fb-xfbml-parse-ignore
+      blockquote(cite="https://www.facebook.com/#{name}")
+        a(href="https://www.facebook.com/#{name}")!= txt

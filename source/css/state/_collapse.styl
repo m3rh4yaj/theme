@@ -1,0 +1,22 @@
+// ----------------------------
+// collapse.js (bootstrap)
+// ----------------------------
+
+.collapse
+  display none
+  &.in
+    display block
+    opacity(1)
+    height auto
+  tr&.in
+    display table-row
+  tbody&.in
+    display table-row-group
+
+.collapsing
+  position relative
+  height auto
+  overflow hidden
+  transition-property height, visibility
+  transition-duration .35s
+  transition-timing-function ease

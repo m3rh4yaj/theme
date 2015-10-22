@@ -1,0 +1,233 @@
+extends base
+
+block vars
+  - var bodyclass = "home";
+
+block header
+  div#main-visual
+    div.layer-loading loading
+    div.slides
+      each val, slide in ['演奏', '象', 'ピエロ', 'サイ', '会場', 'ライオン']
+          img(src="/images/main0"+(slide+1)+".jpg", alt=val)
+    a(id="main-visual-prev",href="javascript:void(0)")
+    a(id="main-visual-next",href="javascript:void(0)")
+    div#main-visual-pager
+
+block content
+
+  section.sec.l-about
+    div.layer-brown-brown
+      h1.tle-about.
+        僕は或知り人の結婚披露式<br>
+        につらなる為に鞄を
+      p.subtle-about.
+        一つ下げたまま、東海道の或停車場へ<br>
+        その奥の避暑地から自動車を飛ばした。<br>
+        自動車の走る道の両がはは大抵松ばかり茂つてゐた。<br>
+        上り列車に間に合ふかどうかは可也怪しいのに違ひなかつた。
+    div.row
+      div.col.col-desktop-6.col-tablet-12.image-cover.photo01 サーカス１
+      div.col.col-desktop-6.col-tablet-12.col-vertical-middle
+        div.text-left
+          h2.tle-col 「自動車には丁度」
+          p.
+            僕の外に或理髪店の主人も乗り合せてゐた。<br>
+            彼は棗のやうにまるまると肥つた、<br>
+            短い顋髯の持ち主だつた。
+      div.col.col-desktop-6.col-desktop-push-6.col-tablet-12.col-tablet-push-0.image-cover.photo02 サーカス２
+      div.col.col-desktop-6.col-desktop-pull-6.col-tablet-12.col-tablet-pull-0.col-vertical-middle
+        div.text-right
+          h2.tle-col 「僕は時間を」
+          p.
+            気にしながら、時々彼と話をした。<br>
+            「妙なこともありますね。<br>
+            ××さんの屋敷には昼間でも幽霊が出るつて云ふんですが。」
+
+  section#index-profile.sec.l-profile
+    div.layer-flesh-flesh
+      h2.tle PROFILE
+        span.subtle プロフィール
+    div.row.text-left
+      div.col.col-desktop-5.col-tablet-12.image-cover.photo03 プロフィール画像
+      div.col.col-desktop-7.col-tablet-12.col-vertical-middle
+        div.col-profile
+          p.m0.
+            「昼間でもね。」僕は冬の西日の当つた向うの松山を眺めながら、善い加減に調子を合せてゐた。「尤も天気の善い日には出ないさうです。一番多いのは雨のふる日だつて云ふんですが。」「雨のふる日に濡れに来るんぢやないか？」「御常談で。……しかしレエン・コオトを着た幽霊だつて云ふんです。」<br>
+            自動車はラツパを鳴らしながら、或停車場へ横着けになつた。僕は或理髪店の主人に別れ、停車場の中へはひつて行つた。すると果して上り列車は二三分前に出たばかりだつた。<br>
+            待合室のベンチにはレエン・コオトを着た男が一人ぼんやり外を眺めてゐた。
+          h3.tle-col 僕は今聞いたばかりの
+          ul
+            li 幽霊の話を思ひ出した。が、ちよつと苦笑したぎり、
+            li 兎に角次の列車を待つ為に停車場前のカツフエへはひることにした。
+            li それはカツフエと云ふ名を与へるのも考へものに近いカツフエだつた。
+
+    div#carousel
+      div.layer-loading
+      ul.slides
+        li: img(src="/images/slides01.jpg", width="280" height="190" alt="CIRCUS")
+        li: img(src="/images/slides02.jpg", width="280" height="190" alt="CIRCUS")
+        li: img(src="/images/slides03.jpg", width="280" height="190" alt="CIRCUS")
+        li: img(src="/images/slides04.jpg", width="280" height="190" alt="CIRCUS")
+        li: img(src="/images/slides05.jpg", width="280" height="190" alt="CIRCUS")
+        li: img(src="/images/slides06.jpg", width="280" height="190" alt="CIRCUS")
+
+  section.sec.l-blog
+    div.layer-white
+      h2.tle BLOG
+        span.subtle ブログ
+    div#query-blog.query-blog
+      div.container
+        - site.categories.findOne({name: 'blog'}).posts.sort('date', 'desc').limit(4).each(function(post){
+          include _mixin/post_meta
+          div.col.col-desktop-3.col-tablet-12
+            a(
+              class="thumb"
+              href=url_for(post.path)
+            ): img(src=post.thambnail)
+            div.meta
+              span.data
+                +date(post.date)
+              span.tag
+                +tag(post.tags)
+            h3.tle-blog
+              a(
+                class= thumb
+                href=url_for(post.path)
+              )= post.title
+        - });
+      p.btn.btn-l.hover-cover: a(href=url_for("archives")) ブログの一覧を見る
+
+  section#index-plan.sec.l-plan
+    div.layer-flesh-flesh
+      h2.tle PLAN
+        span.subtle 料金プラン
+      div.container
+        div#plan-list.row-plan
+          div.col.col-desktop-4.col-tablet-12
+            img(src="/images/photo04.jpg", alt="テーブルマジック")
+            h3.tle-col 「ウイスキイを？
+            p.price 50,000円(税抜)～
+            p.l-plan-equalHeight.
+              Black and White ばかりでございますが、……」
+              僕は曹達水の中にウイスキイを入れ、黙つて一口づつ飲みはじめた。
+              僕の隣には新聞記者らしい三十前後の男が二人何か小声に話してゐた。
+            p.btn.btn-l.hover-cover.btn-modal
+              a(href="javascript:void(0)" data-target="#modal-plan01") 詳しく見る
+          div.col.col-desktop-4.col-tablet-12
+            img(src="/images/photo05.jpg", alt="テーブルマジック")
+            h3.tle-col のみならず仏蘭西語を使つてゐた。
+            p.price 50,000円(税抜)～
+            p.l-plan-equalHeight.
+              僕は彼等に背中を向けたまま、全身に彼等の視線を感じた。
+              それは実際電波のやうに僕の体にこたへるものだつた。彼等は確かに僕の名を知り、僕の噂をしてゐるらしかつた。
+            p.btn.btn-l.hover-cover.btn-modal
+              a(href="javascript:void(0)" data-target="#modal-plan02") 詳しく見る
+          div.col.col-desktop-4.col-tablet-12
+            img(src="/images/photo06.jpg", alt="テーブルマジック")
+            h3.tle-col 「Bien……trs mauvais
+            p.contact: a(href="#") お問い合わせ下さい
+            p.l-plan-equalHeight.
+              ……pourquoi ?……」
+              「Pourquoi ?……le diable est mort !……」
+              「Oui, oui……d'enfer……」
+              僕は銀貨を一枚投げ出し、（それは僕の持つてゐる最後の一枚の銀貨だつた。）
+
+            p.btn.btn-l.hover-cover.btn-modal
+              a(href="javascript:void(0)" data-target="#modal-plan03") 詳しく見る
+
+          div#modal-plan01.modal-content
+            img(src="/images/modal01.jpg", alt="料金プラン１")
+            p.
+              この地下室の外へのがれることにした。夜風の吹き渡る往来は多少胃の痛みの薄らいだ僕の神経を丈夫にした。<br>
+              僕はラスコルニコフを思ひ出し、何ごとも懺悔したい欲望を感じた。<br>
+              が、それは僕自身の外にも、――いや、僕の家族の外にも悲劇を生じるのに違ひなかつた。<br>
+              のみならずこの欲望さへ真実かどうかは疑はしかつた。
+          div#modal-plan02.modal-content
+            img(src="/images/modal02.jpg", alt="料金プラン２")
+            p.
+              若し僕の神経さへ常人のやうに丈夫になれば、――けれども僕はその為にはどこかへ行かなければならなかつた。<br>
+              マドリツドへ、リオへ、サマルカンドへ、……そのうちに或店の軒に吊つた、白い小型の看板は突然僕を不安にした。<br>
+              それは自動車のタイアアに翼のある商標を描いたものだつた。僕はこの商標に人工の翼を手よりにした古代の希臘人を思ひ出した。
+          div#modal-plan03.modal-content
+            img(src="/images/modal03.jpg", alt="料金プラン３")
+            p.
+              彼は空中に舞ひ上つた揚句、太陽の光に翼を焼かれ、とうとう海中に溺死してゐた。<br>
+              マドリツドへ、リオへ、サマルカンドへ、――僕はかう云ふ僕の夢を嘲笑はない訣には行かなかつた。<br>
+              同時に又復讐の神に追はれたオレステスを考へない訣にも行かなかつた。
+
+      section.container.l-option
+        h2.tle OPTION
+        div.row
+          div.col.col-desktop-6.col-tablet-12.image-cover.photo07 サーカス７
+          div.col.col-desktop-6.col-tablet-12.col-vertical-middle
+            div.text-left
+              h3 或精神病院の門を出た後、
+              p.
+                僕は又自動車に乗り、前のホテルへ帰ることにした。<br>
+                が、このホテルの玄関へおりると、レエン・コオトを着た男が一人何か給仕と喧嘩をしてゐた。<br>
+                給仕と？――いや、それは給仕ではない、緑いろの服を着た自動車掛りだつた。
+          div.col.col-desktop-6.col-desktop-push-6.col-tablet-12.col-tablet-push-0.image-cover.photo08 サーカス８
+          div.col.col-desktop-6.col-desktop-pull-6.col-tablet-12.col-tablet-pull-0.col-vertical-middle
+            div.text-left
+              h3 僕はこのホテルへはひることに
+              p.
+                何か不吉な心もちを感じ、さつさともとの道を引き返して行つた。<br>
+                僕の銀座通りへ出た時には彼是日の暮も近づいてゐた。<br>
+                僕は両側に並んだ店や目まぐるしい人通りに一層憂欝にならずにはゐられなかつた。
+
+  section.sec.l-movie
+    div.layer-white
+      h2.tle MOVIE
+        span.subtle 動画
+      div#query-movie
+        ul.slides
+          each val in [0, 1, 2]
+            li: div(id="player0"+val)
+        div.query-movie-control
+          div#query-movie-pager
+          a(id="query-movie-prev" href="javascript:void(0)") prev
+          a(id="query-movie-next" href="javascript:void(0)") next
+        p.btn.btn-l.hover-cover: a(href=url_for("categories/movie")) 詳しく見る
+
+  section.sec.l-flow
+    div.layer-flesh-flesh
+      h2.tle FLOW
+        span.subtle ご依頼の流れ
+      include _partial/article_flow
+
+  section.sec.l-faq
+    div.layer-white
+      h2.tle FAQ
+        span.subtle よくあるご質問
+      include _partial/article_faq
+
+  div.l-social
+    div.layer-white
+      ul.index-social
+        include _mixin/sns
+        - var pageUrl = theme.url;
+        li.btn.btn-social
+          +share("facebook", config.title, pageUrl)
+          span.facebook-count
+        li.btn.btn-social.no-count
+          +tweet("twitter", config.title, pageUrl)
+        li.btn.btn-social
+          +hatebu("はてブ", config.title, pageUrl)
+          span.hatebu-count
+
+  include _partial/article_contact
+
+block script
+  script(type="text/javascript", src="#{theme.path.js}youtube.js")
+  script(type="text/javascript", src="#{theme.path.js}slider.min.js")
+  script(type="text/javascript")
+    | // movie-query
+    | var ytData = [];
+    - site.categories.findOne({name: "movie"}).posts.sort("date", "desc").limit(3).each(function(post){
+    != "ytData.push('" + post.videoId + "');"
+    - });
+
+    | //share count
+    | $(window).on("load", function(){
+    |   socialCountApi("https://www.google.co.jp/", "count");
+    | })

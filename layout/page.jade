@@ -1,0 +1,40 @@
+extends base
+
+block vars
+  - var bodyclass = "page";
+
+prepend window_title
+  = page.title
+  | |
+
+block header
+  div.page-head
+    h2.tle-page= page.id
+      span.subtle= page.title
+  include _partial/breadcrumb
+
+block content
+
+  //-faqページ
+  if is_current('faq')
+    section.sec.l-faq
+      div.layer-white
+        include _partial/article_faq
+        div.page-after
+          p.btn.btn-l.hover-cover: a(href="/") トップに戻る
+    include _partial/article_contact
+
+  if is_current('flow')
+    section.sec.l-flow
+      div.layer-white
+        include _partial/article_flow
+        div.page-after
+          p.btn.btn-l.hover-cover: a(href="/") トップに戻る
+    include _partial/article_contact
+
+  if is_current('contact')
+    section#page-contactform.sec
+      div.layer-flesh-flesh
+        include _partial/contactform
+        div.page-after
+          p.btn.btn-l.hover-cover: a(href="/") トップに戻る

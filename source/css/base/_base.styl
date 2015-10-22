@@ -1,0 +1,86 @@
+strong, b
+  font-weight bold
+
+em
+  font-style italic
+
+code
+  text-shadow 0 1px #fff
+  padding 0 0.3em
+
+ul
+  list-style-type none
+
+ol
+  list-style-type decimal
+
+del
+  text-decoration line-through
+
+sub, sup
+  font-size 75%
+  line-height 0
+  position relative
+
+root sub, root sup
+  vertical-align baseline
+
+sup
+  top -0.5em
+
+sub
+  bottom -0.2em
+
+acronym, abbr
+  border-bottom 1px dotted
+  font-variant normal
+
+abbr
+  cursor help
+
+hr
+  width 50%
+  margin 3em auto
+  border 0
+  border-bottom 5px solid color-border
+
+h1, h2, h3, h4, h5, h6
+  font-weight bold
+  a
+    color color-default
+    text-decoration none
+    &:hover
+      color lighten(color-default, 10)
+
+p
+  margin 1em 0 0
+  padding 0
+
+pre, code
+  font-family font-mono
+  font-size 1em
+
+table
+  border-collapse separate
+  border-spacing 0
+  vertical-align middle
+
+dt, dl
+  color color-default
+
+dt
+  font-weight bold
+
+small
+  color grey
+  font-size small
+
+button
+  margin 0
+  padding 0
+
+img
+  vertical-align bottom
+
+.clearfix
+  clearfix()

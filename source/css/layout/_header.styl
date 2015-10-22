@@ -1,0 +1,213 @@
+// ------------------------------------------
+// header
+// ------------------------------------------
+#header
+  //fixed navbar
+  padding-top navbar-height
+  @media mq-tablet
+    padding-top navbar-height-sp
+
+// ------------------------------------------
+// navbar
+// ------------------------------------------
+
+.navbar
+  position relative
+  height navbar-height /*ie8*/
+  min-height navbar-height
+  line-height navbar-height
+  margin-bottom navbar-margin-bottom
+  clearfix()
+  @media mq-tablet
+    height auto /*ie8*/
+    min-height navbar-height-sp
+    line-height navbar-height-sp
+    border 1px solid transparent
+
+.navbar-header,
+.navbar-collapse
+  margin-right 0
+  margin-left 0
+  @media mq-tablet
+    margin-right (-(navbar-padding-horizontal))
+    margin-left (-(navbar-padding-horizontal))
+
+.navbar-header
+  float left
+  clearfix()
+  @media mq-tablet
+    float none
+
+.navbar-brand
+  float left
+  margin 0
+  padding 0
+  > img
+    display block
+  @media mq-tablet
+    margin 0 navbar-padding-horizontal
+
+.navbar-nav
+  float right
+  margin 0 (-(navbar-padding-horizontal)) 0 0
+  padding 0
+  .navbar-item
+    float left
+    margin 0
+    padding 0
+    > a
+      display block
+      padding 0 20px
+  @media mq-tablet
+    float none
+    margin (navbar-padding-vertical / 2) (-(navbar-padding-horizontal))
+    .navbar-item
+      float none
+      border-top 1px solid color-border
+
+// ------------------------------------------
+// navbar fixed
+// ------------------------------------------
+
+.navbar-fixed-top &,
+.navbar-static-top &,
+.navbar-fixed-bottom &
+  padding-left 0
+  padding-right 0
+
+.navbar-fixed-top,
+.navbar-fixed-bottom
+  .navbar-collapse
+    max-height $navbar-collapse-max-height
+    @media mq-tablet
+      max-height auto
+
+.navbar-fixed-top,
+.navbar-fixed-bottom
+  position fixed
+  right 0
+  left 0
+  z-index navbar-fixed
+
+.navbar-fixed-top
+  top 0
+  border-width 0 0 1px
+
+.navbar-fixed-bottom
+  bottom 0
+  margin-bottom 0 // override .navbar defaults
+  border-width 1px 0 0
+
+// ------------------------------------------
+// navbar collapse
+// ------------------------------------------
+
+.navbar-collapse
+  overflow-x visible
+  width auto
+  padding-right navbar-padding-horizontal
+  padding-left navbar-padding-horizontal
+  box-shadow none
+  -webkit-overflow-scrolling touch
+  &.collapse
+    display block
+    height auto
+    padding-bottom 0
+    overflow visible
+    &.in
+      display block
+      overflow visible
+      overflow-y auto
+  @media mq-tablet
+    box-shadow inset 0 1px 0 rgba(255, 255, 255, .1)
+    &.collapse
+      display none
+
+//navbar-toggle-vertical-middle
+navbar-toggle-height = ((iconbar-height * 3) + (iconbar-margin-top * 2) + (iconbar-padding * 2) ) px
+navbar-toggle-margin = ((navbar-height-sp - navbar-toggle-height) / 2) px
+
+.navbar-toggle
+  position relative
+  display none
+  float right
+  margin navbar-toggle-margin (navbar-padding-horizontal - iconbar-padding)
+  padding iconbar-padding
+  background-color transparent
+  background-image none
+  bottom 1px solid transparent
+  border-radius navbar-toggle-radius
+  &:focus
+    outline 0
+  .icon-bar
+    display block
+    width iconbar-width
+    height iconbar-height
+    border-radius 1px
+  .icon-bar + .icon-bar
+    margin-top iconbar-margin-top
+  @media mq-tablet
+   display block
+
+// ------------------------------------------
+// navbar theme
+// ------------------------------------------
+
+.navbar-default
+  background navbar-background
+  color navbar-color
+  .navbar-nav
+    a
+      color navbar-color
+      &:hover,
+      &:active
+        background lighten(navbar-background, 20)
+  .navbar-brand
+    rem(brand-font-size)
+    hoverUnderLine(color-white, 8px)
+    color color-white
+    &:hover
+      color color-white
+  .navbar-toggle
+    border none
+  .navbar-item
+    rem(navbar-font-size)
+  .navbar-toggle
+    background navbar-toggle-background
+  .icon-bar
+    background iconbar-background
+
+  @media mq-tablet
+    .navbar-brand
+      font-size brand-font-size-sp
+
+.navbar-swap
+  //左右入れ替え
+  .navbar-header
+    float right
+  .navbar-nav
+    float left
+    margin-left (-(navbar-padding-horizontal) * 2)
+  @media mq-tablet
+    .navbar-header
+      float none
+    .navbar-nav
+      float none
+      margin-right (-(navbar-padding-horizontal))
+      margin-left (-(navbar-padding-horizontal))
+
+// ------------------------------------------
+// breadcrumb theme
+// ------------------------------------------
+
+.breadcrumb
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+  ul
+    margin-top 0
+    margin-bottom 0
+    padding 5px 0
+
+  if support-for-ios
+    .ios &
+      background-attachment scroll

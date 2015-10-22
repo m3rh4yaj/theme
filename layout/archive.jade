@@ -1,0 +1,10 @@
+//-ブログアーカイブページ
+if is_current('categories/blog')
+  include archive_blog
+
+//-Movieページ
+if is_current('categories/movie')
+  include archive_movie
+
+unless is_current('categories/blog') || is_current('categories/movie')
+  include archive_blog

@@ -1,0 +1,169 @@
+// ------------------------------------------
+// state
+// スタイルの状態、またスタイルの上書き等。
+//　stateフォルダ内で基本的に編集するのは
+//_index.styl(当ファイル)のみとする。
+// ------------------------------------------
+
+@import "_collapse"
+@import "_hover"
+@import "_generic"
+//@import "_print"
+//@import "_touch"
+
+//ie
+//@import "_ie.styl"
+
+
+
+// ----------------------------
+// layout
+// ----------------------------
+
+.hader-page
+  height 220px
+  color #fff
+  text-align center
+  @media mq-tablet
+    height 120px
+
+.is-brown
+  is-brown()
+
+.is-brown2
+  is-brown()
+
+.is-flesh
+  is-flesh()
+
+.col-vertical-middle
+  display table
+  > div
+    display table-cell
+    vertical-align middle
+
+// ----------------------------
+// layer
+// ----------------------------
+
+.layer-black
+  backgroundTransparency(color-black, .2)
+  height 100%
+
+.layer-white
+  backgroundTransparency(color-white, .9)
+  height 100%
+
+.layer-white-white
+  gradationTransparency(color-white, darken(color-white, 15), .9, 0)
+  height 100%
+
+.layer-brown-brown
+  gradationTransparency(color-brown, darken(color-brown, 20), .9, 0)
+  height 100%
+
+.layer-flesh-flesh
+  gradationTransparency(color-flesh, darken(color-flesh, 20), .9, 0)
+  height 100%
+
+.layer-red-green
+  gradationTransparency(red, green, .4, 0)
+  height 100%
+
+// ----------------------------
+// button
+// ----------------------------
+
+.btn-l
+  rem(13px)
+  is-brown2()
+  width 260px
+  line-height 1.8
+  letter-spacing .1em
+  border-radius 3px
+  a
+    padding 10px 0
+    display block
+  @media mq-tablet
+    width 360px
+  @media mq-mobile
+    width 90%
+
+.btn-m
+  rem(13px)
+  btnRadius(1px, 5px)
+  width 230px
+  height 60px
+  line-height 60px
+  font-weight bold
+  letter-spacing .1em
+
+.btn-red
+  is-red(true)
+
+// ----------------------------
+// hover
+// ----------------------------
+
+.hover-shake
+  hoverShake()
+
+.hover-cover
+  hoverCoverUpDwon(lighten(color-brown2, 10))
+
+// ------------------------------------------
+// photo
+// ------------------------------------------
+
+.home
+  .photo01
+    background-image url('/images/photo01.jpg')
+    background-position center center
+
+  .photo02
+    background-image url('/images/photo02.jpg')
+    background-position center top
+
+  .photo03
+    background-image url('/images/photo03.jpg')
+    background-position center center
+
+  .photo07
+    background-image url('/images/photo07.jpg')
+    background-position center center
+
+  .photo08
+    background-image url('/images/photo08.jpg')
+    background-position center center
+
+  @media mq-tablet
+    .photo01,
+    .photo02
+      padding-bottom 39%
+    .photo03
+      padding-bottom 60%
+      &.image-cover
+        background-size 59% auto
+    .photo07,
+    .photo08
+      padding-bottom 50%
+
+  @media mq-mobile
+    .photo01,
+    .photo02
+      padding-bottom 60%
+    .photo03
+      padding-bottom 60%
+      &.image-cover
+        background-size cover
+    .photo07,
+    .photo08
+      padding-bottom 60%
+
+    .ie8
+      .photo01,
+      .photo02
+        padding-bottom 43%
+      .photo07,
+      .photo08
+        padding-bottom 50%

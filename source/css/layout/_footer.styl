@@ -1,0 +1,53 @@
+// ------------------------------------------
+// footer
+// ------------------------------------------
+
+#footer
+  background url('/images/bg-footer.png') no-repeat center top
+  background-attachment fixed
+  line-height 1
+  text-align center
+  rem(12px)
+  .copyright
+    margin 0
+    padding 33px 0
+    span
+      margin 0 0 0 5px
+
+  @media mq-tablet
+    .copyright
+      padding 22px 0
+
+  if support-for-ios
+    .ios &
+      background-attachment scroll
+
+// ------------------------------------------
+// script
+// ------------------------------------------
+
+#totop
+  opacity(.6)
+  hide-text(ir-s)
+  arrow(24px, 5px, #CCC99F, color-white, 21px, 15px)
+  fixed bottom -70px right 30px
+  size 56px
+  overflow hidden
+  border 1px solid #726C1D
+  border-radius 50%
+  transition all 0.3s ease 0s
+  z-index z-index-totop
+  if support-for-ie
+    .ie8 &
+      rem(15px)
+      font-weight bold
+      line-height 54px
+      text-indent 0
+      span
+        display none
+  &:hover
+    opacity(.8)
+    animated(pulse, .3s)
+    color color-white
+  @media mq-mobile
+    display none

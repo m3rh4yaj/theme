@@ -1,0 +1,87 @@
+// ------------------------------------------
+// module element
+// ------------------------------------------
+
+layer-loading(color, src)
+  position absolute
+  width 100%
+  height 100%
+  z-index 100000
+  background-color color
+  background-image url(src)
+  background-repeat no-repeat
+  background-position center center
+  hide-text(ir-s)
+
+//inline-block for IE6,7
+inline-block()
+  display inline-block
+  *display inline /* for IE6,7 */
+  *zoom 1; /* for IE6,7 */
+
+//円形ボタン
+btnCircle(size, android2x = false)
+  border-radius 50%
+  size size
+  line-height size
+  text-align center
+  if android2x
+    .android2x &
+      //%の方が円が綺麗。
+      border-radius size*.5 px
+
+// ------------------------------------------
+// arrow
+// ------------------------------------------
+
+arrow($size, $width, $background, $color, $top, $left)
+  position relative
+  background $background
+  span
+    absolute top $top left $left
+    size $size
+    border $width solid transparent
+    border-color $color $color transparent transparent
+    transform rotate(-45deg)
+
+// ------------------------------------------
+// Horizontal Rule
+// ------------------------------------------
+
+myHr(color, margin-top, margin-bottom = margin-top)
+  rem(10px)
+  content "◇◇◇"
+  display block
+  margin margin-top 0 margin-bottom 1em
+  text-align center
+  letter-spacing 1em
+  color color
+
+// ------------------------------------------
+// states
+// ------------------------------------------
+
+is-red(hover = false)
+  background color-red
+  color color-white
+  if hover
+    &:hover,
+    &:active
+      background darken(color-red, 10)
+
+is-brown()
+  background color-brown
+  color color-white
+
+is-brown2()
+  position relative
+  background color-brown2
+  color color-white
+
+is-flesh()
+  background color-flesh
+  color color-default
+
+btnRadius(border-width = 1px, border-radius = 5px)
+  border border-width solid #fff
+  border-radius border-radius

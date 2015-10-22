@@ -1,0 +1,46 @@
+div.aside-likebox-min
+  include ../_mixin/likebox
+  +likebox("StarbucksJapan", "facebook", 250, 450)
+
+div.aside-likebox
+  include ../_mixin/likebox
+  +likebox("StarbucksJapan", "facebook", 440, 450)
+
+div.aside-follow
+  include ../_mixin/sns
+  +follow("Follow", "Starbucks_J")
+
+section.aside-new-query
+  h3 最新の記事
+  - site.categories.findOne({name: 'blog'}).posts.sort('date', 'desc').limit(10).each(function(post){
+      div.aside-query-box
+        //-小サイズのサムネイルパスを取得(x_min.jpg)
+        - var thumbPath = post.thambnail;
+        - var thumbPathMin = thumbPath.replace(/(\.gif|\.jpg|\.png)/g,'_min$1');
+        a(
+          class="thumb"
+          href=url_for(post.path)
+        ): img(src= thumbPathMin)
+
+        include ../_mixin/post_meta
+        span.data-aside-post
+          +date(post.date)
+
+        a(
+          class="tle-aside-post"
+          href=url_for(post.path)
+        )= post.title
+  - })
+
+section.aside-category
+  h3 Category
+  div.aside-tag-cloud
+    include ../_mixin/post_meta
+    != list_tags({orderby: 'length', order: 'desc', show_count: false})
+
+section.aside-template
+  h3 Template
+  ul.aside-template-bnr
+    li.aside-template-item: img(src="/images/bnr/jade.png" alt="jade")
+    li.aside-template-item: img(src="/images/bnr/stylus.png" alt="stylus")
+    li.aside-template-item: img(src="/images/bnr/coffeescript2.jpg" alt="coffeescript")

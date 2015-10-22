@@ -1,0 +1,221 @@
+// ------------------------------------------
+// font-size (px→)
+// ------------------------------------------
+
+em(size = font-size)
+  font-size size
+  font-size (size/remove-unit(font-size)) * 1 em
+
+rem(size = font-size)
+  font-size size
+  font-size (size/remove-unit(font-size)) * 1 rem
+
+// ------------------------------------------
+// percentage
+// ------------------------------------------
+
+percentage($n)
+  if $n == 0
+    0
+  else
+    unit($n * 100, "%")
+
+// ------------------------------------------
+// transparency
+// ------------------------------------------
+
+opacity(alpha)
+  //alpha 0 ~ 1
+  -khtml-opacity alpha
+  -moz-opacity alpha
+  opacity alpha
+  if support-for-ie
+    //for ie 8
+    .ie8 &
+      filter unquote('alpha(opacity=' + round(alpha * 100) + ')')
+
+// ------------------------------------------
+// background transparency
+// ------------------------------------------
+
+backgroundTransparency(color = #000, alpha = 1)
+  background-color rgba(color, alpha)
+  if support-for-ie
+    .ie8 &
+      background-color transparent
+      ms-color = argb(color, alpha)
+      filter s('progid:DXImageTransform.Microsoft.gradient(startColorstr=%s,endColorstr=%s)', ms-color, ms-color)
+      zoom 1
+    .ie9 &
+      &:nth-child(n)
+        filter none
+
+gradationTransparency(start-color = #000, end-color = #fff, alpha = 1, gradient-type = 0)
+  destination = top
+  if gradient-type == 1
+    destination = left
+  background-image linear-gradient(destination, rgba(start-color, alpha), rgba(end-color, alpha))
+  if support-for-ie
+    .ie9 &,
+    .ie8 &
+      background-image none
+      ms-start-color = argb(start-color, alpha)
+      ms-end-color = argb(end-color, alpha)
+      filter s("progid:DXImageTransform.Microsoft.gradient(startColorstr='%s',endColorstr='%s',GradientType="+gradient-type+")", ms-start-color,ms-end-color)
+    .ie8 &
+      zoom 1
+
+hex(decimal)
+   hex-value = ('0') ('1') ('2') ('3') ('4') ('5') ('6') ('7') ('8') ('9') ('A') ('B') ('C') ('D') ('E') ('F')
+   unquote(hex-value[floor(decimal / 16)] + hex-value[floor(decimal % 16)])
+argb(color, alpha = 1)
+  unquote('#') + hex(alpha * 255) + hex(red(color)) + hex(green(color)) + hex(blue(color))
+
+backgroundImageTransparency(color, alpha, src)
+  //ie8未対応。
+  //擬似要素でfilterが効かない。
+  position relative
+  background color
+  overflow hidden
+  &:before
+    position absolute
+    top 0
+    left 0
+    content " "
+    display block
+    width 100%
+    height 100%
+    z-index z-index-image-transparency
+    background-image url(src)
+    opacity(alpha)
+
+// ------------------------------------------
+// triangle
+// ------------------------------------------
+
+triangle(width = 10px, height = 10px, direction = 'bottom', color = #000)
+  width 0
+  height 0
+  background 0
+  border-style solid
+  directions = {
+    top: {
+      border-width: 0 (width * .5) height (width * .5),
+      border-color: transparent transparent color transparent
+    },
+    topRight: {
+      border-width: 0 width height 0,
+      border-color: transparent color transparent transparent
+    },
+    right: {
+      border-width: (height * .5) 0 (height *.5) width,
+      border-color: transparent transparent transparent color
+    },
+    bottomRight: {
+      border-width: 0 0 height width,
+      border-color: transparent transparent color transparent
+    },
+    bottom: {
+      border-width: height (width * .5) 0 (width * .5),
+      border-color: color transparent transparent transparent
+    },
+    bottomLeft: {
+      border-width: width 0 0 height,
+      border-color: transparent transparent transparent color
+    },
+    left: {
+      border-width: (height * .5) width (height * .5) 0,
+      border-color: transparent color transparent transparent
+    },
+    topLeft: {
+      border-width: height width 0 0,
+      border-color: color transparent transparent transparent
+    }
+  }
+  styles = directions[direction]
+  {styles}
+
+// ------------------------------------------
+// placeholder
+// テキストフォーム背景
+// ------------------------------------------
+
+placeholder()
+    &::-webkit-input-placeholder
+        {block}
+    &:-moz-placeholder
+        {block}
+    &::-moz-placeholder
+        {block}
+    &:-ms-input-placeholder
+        {block}
+
+// ------------------------------------------
+// preWrap
+// ------------------------------------------
+
+preWrap()
+  white-space pre-wrap       /* Chrome & Safari */
+  white-space -moz-pre-wrap  /* Mozilla since 1999 */
+  white-space -pre-wrap      /* Opera 4-6 */
+  white-space -o-pre-wrap    /* Opera 7 */
+  word-wrap break-word       /* Internet Explorer 5.5+ */
+
+// ------------------------------------------
+// hide-text (image replacement)
+// ir-h5bp
+// ir-p (Phark Method)
+// ir-s (Scott Kellum Method)
+// ir-ll(Leahy/Langridge Method)
+// ------------------------------------------
+
+hide-text(type = ir-h5bp)
+  if type is ir-p
+    text-indent -9999px
+    overflow hidden
+  else if type is ir-s
+    overflow hidden
+    text-indent 110%
+    white-space nowrap
+  else if type is ir-ll
+    //add [padding-top　= img height]
+    overflow hidden
+    height 0
+  else
+    //add [width,height,background]
+    overflow: hidden;
+    background-color: transparent;
+    border: 0;
+    if support-for-ie
+      *text-indent: -9999px; /* for IE6,7 */
+    &:before
+      content: "";
+      display: block;
+      width: 0;
+      height: 150%;
+
+// ------------------------------------------
+// absolute-center
+// ------------------------------------------
+
+absolute-center(depth = true, width = true)
+  position absolute
+  overflow auto
+  margin auto
+  if depth
+    top 0
+    bottom 0
+  if width
+    left 0
+    right 0
+
+// ------------------------------------------
+// box-focus
+// ------------------------------------------
+
+box-focus()
+  // Default
+  outline thin dotted
+  // WebKit
+  outline 5px auto #fff
+  outline-offset -2px

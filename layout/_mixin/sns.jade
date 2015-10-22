@@ -1,0 +1,101 @@
+//-onClick ウィンドウ位置
+- var snsOnclickTop = null;
+- var snsOnclickLeft = null;
+
+//-onClick メニューバー有無
+- var snsOnclickMenubar = null;
+
+//-onClick ツールバー有無
+- var snsOnclickToolbar = 0;
+
+//-onClick アドレスバー有無
+- var snsOnclickLocation = null;
+
+//-onClick ステータスバー有無
+- var snsOnclickStatus = null;
+
+//-onClick リサイズ 可否
+- var snsOnclickResizable = 1;
+
+//-onClick スクロールバー 有無
+- var snsOnclickScrollbars = 1;
+
+
+
+//-twitter ツイートボタン
+mixin tweet(txt, shareTxt, pageUrl)
+  - var width = 650;
+  - var height = 470;
+  a(
+    class="sns-tweet"
+    title="ツイートする"
+    href="http://twitter.com/share?count=horizontal&original_referer=#{pageUrl}&text=【#{shareTxt}】&url=#{pageUrl}"
+    target="_blank"
+    onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=#{width}, height=#{height}, personalbar=0, toolbar=#{snsOnclickToolbar}, scrollbars=#{snsOnclickScrollbars}, resizable=#{snsOnclickResizeble}'); return false;"
+    rel="nofollow"
+  )!= txt
+
+//-twitter フォローボタン
+mixin follow(txt, account, pageUrl)
+  - var width = 650;
+  - var height = 470;
+  a(
+    class="sns-follow"
+    title="フォローする"
+    href="https://twitter.com/intent/follow?original_referer=#{pageUrl}&screen_name=#{account}&tw_p=followbutton"
+    target="_blank"
+    onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=#{width}, height=#{height}, personalbar=0, toolbar=#{snsOnclickToolbar}, scrollbars=#{snsOnclickScrollbars}, resizable=#{snsOnclickResizeble}'); return false;"
+    rel="nofollow"
+  )!= txt
+
+//-twitter ハッシュタグ
+mixin hashtags(txt, hashtag, pageUrl)
+  - var width = 650;
+  - var height = 470;
+  a(
+    class="sns-hashtags"
+    title="ハッシュタグでつぶやく"
+    href="https://twitter.com/intent/tweet?hashtags=#{hashtag}&original_referer=#{pageUrl}&share_with_retweet=never&tw_p=tweetbutton"
+    target="_blank"
+    onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow', 'width=#{width}, height=#{height}, personalbar=0, toolbar=#{snsOnclickToolbar}, scrollbars=#{snsOnclickScrollbars}, resizable=#{snsOnclickResizeble}'); return false;"
+    rel="nofollow"
+  )!= txt
+
+//-facebook シェアボタン
+mixin share(txt, shareTxt, pageUrl)
+  - var width = 600;
+  - var height = 400;
+  a(
+    class="sns-share"
+    title="シェアする"
+    href="http://www.facebook.com/sharer.php?u=#{pageUrl}&t=【#{shareTxt}】"
+    target="_blank"
+    onClick="window.open(encodeURI(decodeURI(this.href)), 'sharewindow', 'width=#{width}, height=#{height}, personalbar=0, toolbar=#{snsOnclickToolbar}, scrollbars=#{snsOnclickScrollbars}, resizable=#{snsOnclickResizeble}'); return false;"
+    rel="nofollow"
+  )!= txt
+
+//-googleplus 共有ボタン
+mixin google(txt, pageUrl)
+  - var width = 600;
+  - var height = 400;
+  a(
+    class="sns-google"
+    title="共有する"
+    href="https://plus.google.com/share?url=#{pageUrl}"
+    target="_blank"
+    onClick="window.open(encodeURI(decodeURI(this.href)), 'pluswindow', 'width=600, height=450, personalbar=0, toolbar=#{snsOnclickToolbar}, scrollbars=#{snsOnclickScrollbars}, resizable=#{snsOnclickResizeble}'); return false;"
+    rel="nofollow"
+  )!= txt
+
+//-hatebu ブックマークボタン
+mixin hatebu(txt, shareTxt, pageUrl)
+  - var width = 600;
+  - var height = 450;
+  a(
+    class="sns-hatebu"
+    title="ブックマーク"
+    href="http://b.hatena.ne.jp/add?mode=confirm&url=#{pageUrl}&title=【#{shareTxt}】"
+    target="_blank"
+    onClick="window.open(encodeURI(decodeURI(this.href)), 'pluswindow', 'width=600, height=450, personalbar=0, toolbar=#{snsOnclickToolbar}, scrollbars=#{snsOnclickScrollbars}, resizable=#{snsOnclickResizeble}'); return false;"
+    rel="nofollow"
+  )!= txt

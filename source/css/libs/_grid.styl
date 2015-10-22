@@ -1,0 +1,115 @@
+// ----------------------------
+// Grid (bootstrap)
+//
+//  vaiables
+//    mq-desktop
+//    mq-normal
+//    mq-tablet
+//    mq-mobile
+// ----------------------------
+
+//Centered container element
+container-fixed($gutter = grid-gutter-width)
+  margin-right auto
+  margin-left auto
+  padding-left ($gutter / 2)
+  padding-right ($gutter / 2)
+  clearfix()
+
+//Creates a wrapper for a series of columns
+make-row($gutter = grid-gutter-width)
+  margin 0
+  clearfix()
+  .container &
+    margin-left ceil($gutter / -2)
+    margin-right floor($gutter / -2)
+
+// ------------------------------------------
+// grid mixin
+// ------------------------------------------
+
+make-grid-columns()
+  $col
+    position relative
+    min-height 1px
+    padding-left ceil(grid-gutter-width / 2)
+    padding-right floor(grid-gutter-width / 2)
+
+  for $index in 1..grid-columns
+    .col-mobile-{$index}, .col-tablet-{$index}, .col-normal-{$index}, .col-desktop-{$index}
+      @extend $col
+
+float-grid-columns($class)
+  $col-float-{$class}
+    float left
+  for $index in 1..grid-columns
+    .col-{$class}-{$index}
+      @extend $col-float-{$class}
+
+calc-grid-column($index, $class, $type)
+  if $type == width and $index > 0
+    .col-{$class}-{$index}
+      width percentage(($index / grid-columns))
+  else if $type == push
+    if $index == 0
+      .col-{$class}-push-0
+        left auto
+    else
+      //カラム右移動
+      .col-{$class}-push-{$index}
+        left percentage(($index / grid-columns))
+  else if $type == pull
+    if $index == 0
+      .col-{$class}-pull-0
+        right auto
+    else
+      //カラム左移動
+      .col-{$class}-pull-{$index}
+        right percentage(($index / grid-columns))
+  else if $type == offset
+      //空白カラム
+    .col-{$class}-offset-{$index}
+      margin-left percentage(($index / grid-columns))
+
+loop-grid-columns(grid-columns, $class, $type)
+  for $index in grid-columns..0
+    calc-grid-column($index, $class, $type)
+
+make-grid($class)
+  float-grid-columns($class)
+  loop-grid-columns(grid-columns, $class, width)
+  loop-grid-columns(grid-columns, $class, pull)
+  loop-grid-columns(grid-columns, $class, push)
+  loop-grid-columns(grid-columns, $class, offset)
+
+// ----------------------------
+// grid Framework
+// ----------------------------
+
+//container
+.container
+  container-fixed()
+  width container-desktop
+  @media mq-normal
+    width container-normal
+  @media mq-tablet
+    width container-tablet
+  @media mq-mobile
+    width container-mobile
+
+.container-fluid
+  container-fixed()
+
+//row
+.row
+  make-row()
+
+make-grid-columns()
+
+make-grid(desktop)
+@media mq-normal
+  make-grid(normal)
+@media mq-tablet
+  make-grid(tablet)
+@media mq-mobile
+  make-grid(mobile)

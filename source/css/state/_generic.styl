@@ -1,0 +1,63 @@
+// ----------------------------
+// generic class
+// ----------------------------
+
+.sr-only
+  //スクリーンリーダー (=visuallyhidden)
+  position absolute
+  width 1px
+  height 1px
+  margin -1px
+  padding 0
+  overflow hidden
+  clip rect(0, 0, 0, 0)
+  border 0
+
+.left, .alignleft
+  float left
+.right, .alignright
+  float right
+
+.text-left
+  text-align left
+.text-center
+  text-align center
+.text-right
+  text-align right
+
+.show
+  display block
+.hidden
+  display none
+.invisible
+  visibility hidden
+
+@media mq-normal
+  .show-normal
+    display block
+  .hidden-normal
+    display none
+
+@media mq-tablet
+  .show-table
+    display block
+  .hidden-tablet
+    display none
+
+@media mq-mobile
+  .show-table
+    display block
+  .hidden-mobile
+    display none
+
+.fade-out
+  opacity(0)
+
+.fade-in
+  opacity(1)
+
+.m0
+  margin 0
+
+.p0
+  padding 0

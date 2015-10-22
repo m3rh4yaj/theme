@@ -1,0 +1,99 @@
+// ----------------------------
+// blog-archive
+// ----------------------------
+
+.archive-blog,
+.post-blog
+  background url('/images/bg-layout02.png') no-repeat center top
+  background-attachment fixed
+
+#main
+  animated(fadeInLeft, .5s)
+  .archive-query-blog
+    margin 0 0 50px
+    padding 10px 0 0
+
+  .tle-blog
+    rem(18px)
+    margin 40px 0 0
+    padding 0 0 5px
+    line-height 1.4
+    border-bottom 1px dashed color-border
+    a
+      color color-brown2
+      &:hover
+        color lighten(color-brown2, 10)
+
+  .postmeta
+    rem(11px)
+    margin 20px 0 0
+    clearfix()
+    .sns
+      margin 0
+      padding 0
+      float left
+      a
+        padding 4px 7px 4px 5px
+        border-radius 5px
+        background lighten(color-brown2, 10)
+        &:before
+          @extend .myicon
+          margin-right 5px
+        &:hover
+          opacity(.7)
+      .sns-share
+        margin-right 10px
+        &:before
+          content icon-facebook
+      .sns-tweet
+        &:before
+          top 1px
+          content icon-twitter
+    .data
+      float right
+      border 1px solid transparent
+      a
+        padding 4px
+      .date
+        margin-right 10px
+
+  .thumb
+    margin 20px 0 0
+    text-align center
+    a:hover
+      opacity(.8)
+
+  .archive-content
+    rem(13px)
+    line-height 1.8
+    margin 10px 0 40px
+    .more-link
+      rem(12px)
+      margin 10px 0
+      width 100%
+      border 2px solid color-brown2
+      text-align center
+      a
+        padding 5px
+        display block
+        &:hover
+          color #fff
+          background lighten(color-brown2, 10)
+
+  @media mq-tablet
+    .archive-query-blog
+      padding 0
+    .tle-blog
+      rem(16px)
+      margin 30px 0 0
+      border-bottom 1px dashed color-border
+    .postmeta
+      .sns
+        float none
+      .data
+        margin 15px 0 0
+        float none
+    .thumb
+      margin-top 15px
+      img
+        width 100%
