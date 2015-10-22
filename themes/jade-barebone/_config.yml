@@ -1,0 +1,19 @@
+menu:
+  Home: /
+  Archives: /blog
+
+path:
+  js: /js/
+  favicon: /favicon.png
+
+excerpt_link: 続きを読む
+
+addthis:
+  enable: false
+
+fancybox: true
+
+icon:
+  twitter:  '&#xea91;'
+  facebook: '&#xea8c;'
+  hatebu:   '&#xe603;'
